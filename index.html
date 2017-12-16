@@ -22,18 +22,62 @@
   <link rel="icon" type="image/png" sizes="96x96" href="assets/img/favicon/favicon-96x96.png">
   <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon/favicon-16x16.png">
   <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="assets/css/jquery-ui.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/materialize.min.css">
   <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/media.css">
 </head>
 <body>
   <section id="loader" class="valign-wrapper">
-    <img id="logo" src="assets/img/kaiwapp-logo.svg" alt="">
+    <img id="loader-logo" src="assets/img/kaiwapp-logo.svg" alt="">
+  </section>
+  <section id="login" class="container centered">
+    <div class="card-panel">
+      <div class="row">
+        <div id="login-title" class="col s12">
+          <h2>Login</h2>
+        </div>
+      </div>
+      <div class="row">
+        <form action="" class="col s12">
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="login-username" type="text" class="validate">
+              <label for="login-username">Username</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input id="pass" type="password" class="validate">
+              <label for="pass">Password</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <input type="text" id="login-avatar-url" class="validate">
+              <label for="login-avatar-url">Avatar URL</label>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="row">
+        <div class="col s12 center-align">
+          <a id="login-btn" class="waves-effect waves-light btn disabled">button</a>
+        </div>
+      </div>
+      <div class="row">
+        <div id="login-info" class="col s12 center-align">
+          <p>Your username cannot contain spaces or symbols and the url of the image must end with jpg, jpeg, gif or svg.</p>
+          <p>For this demo you can choose your username, but make sure to use the following
+          pass: "<strong>kaiwappLogin//88"</strong>.</p>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="false"></div>
-
   <script src="assets/js/jquery-3.2.1.js"></script>
+  <script src="assets/js/jquery-ui.min.js"></script>
   <script src="assets/js/materialize.min.js"></script>
   <script src="assets/js/app.js"></script>
 </body>

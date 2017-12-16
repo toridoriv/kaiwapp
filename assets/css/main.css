@@ -1,3 +1,7 @@
+html {
+  background-color: #EEEEEE;
+}
+
 #loader {
   background-color: #EEEEEE;
   position: fixed;
@@ -6,9 +10,11 @@
   top: 0;
   left: 0;
   justify-content: center;
+  z-index: 9999;
+  display: none;
 }
 
-#logo {
+#loader-logo {
   max-height: 70vh;
   max-width: 70vw;
   -webkit-animation: opacity 2s;
@@ -16,6 +22,47 @@
   animation: opacity 2s;
   animation-iteration-count: infinite;
   animation-direction: alternate;
+}
+
+.centered {
+  display: flex;
+  justify-content: center;
+}
+
+#login .card-panel {
+  width: 50%;
+}
+
+#login-logo {
+  width: 25%;
+  cursor: pointer;
+}
+
+#login-title {
+  background-color: #26a69a;
+  color: white;
+}
+
+#login-title h2 {
+  font-size: 1.35em;
+  font-weight: 200;
+  text-transform: uppercase;
+}
+
+#login-info {
+  color: #9e9e9e;
+}
+
+#login-info p {
+  margin: 0;
+}
+
+#login-info p:first-child {
+  margin-bottom: 0.5em;
+}
+
+#login form {
+  margin-bottom: -2em;
 }
 
 @keyframes opacity {
