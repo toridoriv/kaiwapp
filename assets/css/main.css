@@ -1,0 +1,29 @@
+#loader {
+  background-color: #EEEEEE;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  justify-content: center;
+}
+
+#logo {
+  max-height: 70vh;
+  max-width: 70vw;
+  -webkit-animation: opacity 2s;
+  -o-animation: opacity 2s;
+  animation: opacity 2s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes opacity {
+  from {opacity: 1;}
+  to {opacity: 0.3;}
+}
+
+@-webkit-keyframes opacity {
+  from {opacity: 1;}
+  to {opacity: 0.3;}
+}
