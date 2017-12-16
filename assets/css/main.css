@@ -1,5 +1,6 @@
 html {
   background-color: #EEEEEE;
+  line-height: 1;
 }
 
 #loader {
@@ -11,6 +12,7 @@ html {
   left: 0;
   justify-content: center;
   z-index: 9999;
+  display: none;
 }
 
 #loader-logo {
@@ -63,6 +65,71 @@ html {
 #login form {
   margin-bottom: -2em;
 }
+
+.avatar-container {
+  width: 49px;
+  height: 49px;
+  background-color: red;
+}
+
+.big-container {
+  padding-left: 2em;
+  padding-right: 2em;
+}
+
+.hamburger {
+  padding-top: 20px;
+}
+
+.hamburger-inner, .hamburger-inner::before, .hamburger-inner::after {
+  background-color: white;
+  width: 30px;
+  height: 1px;
+}
+
+#title-panel {
+  font-family: 'Open Sans Condensed', sans-serif;
+  display: inline-block;
+  font-size: 1.5em;
+  margin-left: 1em;
+}
+
+.panel {
+  height: 62px;
+  cursor: pointer;
+  background-color: #078D83;
+  color: white;
+}
+
+.panel:first-child:hover, .panel:nth-child(2):hover  {
+  background-color: #239F96;
+}
+
+#left-icons {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#left-icons i {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 62px;
+  width: 60px;
+}
+
+#left-icons i:hover {
+  background-color: #239F96;
+}
+/* 
+.hamburger--collapse .hamburger-inner::after {
+  top: -14px;
+}
+
+.hamburger-inner::before {
+  top: -7px;
+} */
 
 @keyframes opacity {
   from {opacity: 1;}

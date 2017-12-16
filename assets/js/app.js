@@ -27,6 +27,17 @@ $(document).ready(function() {
       alert("Input not valid");
     }
   });
+
+  $("#first-panel").click(function() {
+    $(".hamburger").toggleClass("is-active");
+  });
+
+  $("#first-panel").mouseover(function() {
+    $(".hamburger").css({"opacity":"0.6"});
+    $(this).mouseleave(function() {
+      $(".hamburger").css({"opacity":"1"});
+    });
+  });
 });
 
 /**
