@@ -183,6 +183,42 @@ textarea:focus {
   float: right;
 }
 
+.post-container-now {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1em;
+}
+
+.post-container-arch {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 1em;
+}
+
+.post-now {
+  min-width: 50px;
+  max-width: 50%;
+  background-color: #B0CAC8;
+  padding: 6px 0 8px 0;
+  padding-left: 9px;
+  padding-right: 7px;
+  border-radius: 4px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.post-archive {
+  min-width: 50px;
+  max-width: 50%;
+  background-color: red;
+  padding: 6px 0 8px 0;
+  padding-left: 9px;
+  padding-right: 7px;
+  border-radius: 4px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
 /* 
 .hamburger--collapse .hamburger-inner::after {
   top: -14px;

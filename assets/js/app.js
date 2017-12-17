@@ -6,6 +6,7 @@ var passwd = "kaiwappLogin//88";
 var checkImg = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|jpeg|png|svg)/;
 var textaMsg = $("#textarea-msg");
 var sendBtn = $("#send-btn");
+var chat = $("#chat");
 
 
 $(document).ready(function() {
@@ -50,10 +51,10 @@ $(document).ready(function() {
   });
 
   $("#send-btn").click(function() {
-    var msg = $(textaMsg).val().trim();
+    msg = $(textaMsg).val().trim();
     $(textaMsg).val("");
     $(this).addClass("disabled");
-    console.log(msg);
+    $(chat).append(postNow+msg+endPost);
   });
 });
 
