@@ -197,7 +197,7 @@ textarea:focus {
 
 .post-now {
   min-width: 50px;
-  max-width: 50%;
+  max-width: 60%;
   background-color: #B0CAC8;
   padding: 6px 0 8px 0;
   padding-left: 9px;
@@ -209,7 +209,7 @@ textarea:focus {
 
 .post-archive {
   min-width: 50px;
-  max-width: 50%;
+  max-width: 60%;
   background-color: red;
   padding: 6px 0 8px 0;
   padding-left: 9px;
@@ -217,6 +217,16 @@ textarea:focus {
   border-radius: 4px;
   white-space: pre-wrap;
   word-wrap: break-word;
+}
+
+.post-now span:first-child, .post-archive span:first-child  {
+  display: block;
+  line-height: 1.4;
+  margin-bottom: 0.5em;
+}
+
+.time {
+  float: right;
 }
 
 /* 

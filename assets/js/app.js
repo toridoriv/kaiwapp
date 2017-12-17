@@ -8,6 +8,32 @@ var textaMsg = $("#textarea-msg");
 var sendBtn = $("#send-btn");
 var chat = $("#chat");
 
+var determineHour = (function() {
+  var date = new Date();
+  var hour = date.getHours();
+
+  if (hour <= 9) {
+    hour = "0" + hour.toString();
+  } else {
+    hour = hour.toString();
+  };
+
+  return hour;
+});
+
+var determineMinutes = (function() {
+  var date = new Date();
+  var minutes = date.getMinutes();
+
+  if (minutes <= 9) {
+    minutes = "0" + minutes.toString();
+  } else {
+    minutes = minutes.toString();
+  };
+
+  return minutes;
+});
+
 
 $(document).ready(function() {
 
@@ -54,7 +80,7 @@ $(document).ready(function() {
     msg = $(textaMsg).val().trim();
     $(textaMsg).val("");
     $(this).addClass("disabled");
-    $(chat).append(postNow+msg+endPost);
+    $(chat).append(postNow+"<span>"+msg+"</span>"+"<span class='time'>"+determineHour()+":"+determineMinutes()+"</span>"+endPost);
   });
 });
 
