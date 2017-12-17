@@ -3,6 +3,15 @@ html {
   line-height: 1;
 }
 
+*::-webkit-scrollbar-thumb {
+  background-color: #26a69a;
+}
+
+*::-webkit-scrollbar {
+  width: 4px;
+  background: transparent;
+}
+
 #loader {
   background-color: #EEEEEE;
   position: fixed;
@@ -73,8 +82,10 @@ html {
 }
 
 .big-container {
+  height: 95vh;
   padding-left: 2em;
   padding-right: 2em;
+  overflow: hidden;
 }
 
 .hamburger {
@@ -122,6 +133,56 @@ html {
 #left-icons i:hover {
   background-color: #239F96;
 }
+
+#app .row {
+  margin-bottom: 0;
+}
+
+.cont {
+  height: 85vh;
+  overflow: hidden;
+}
+
+.col.cont {
+  padding: 0;
+}
+
+.over-y {
+  overflow-y: auto;
+}
+
+.cont:first-child {
+  border-right: 2px solid #EEEEEE;
+}
+
+#chat {
+  height: 65vh;
+  background: url("../img/chat-panel-bg.png") repeat #e5ddd5;
+  padding: 1em 2em;
+}
+
+textarea {
+  resize: none;
+  border: none;
+  border-bottom: 1px solid #EEEEEE;
+  -webkit-transition: all .1s ease; /* Safari */
+  transition: all .1s ease;
+  margin-bottom: 1em;
+}
+
+textarea:focus {
+  outline: none;
+  box-shadow: 0 4px 0px -2px #26a69a;
+}
+
+#write-here {
+  padding: 1em 2em;
+}
+
+#write-here a {
+  float: right;
+}
+
 /* 
 .hamburger--collapse .hamburger-inner::after {
   top: -14px;
