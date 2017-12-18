@@ -218,7 +218,7 @@ textarea:focus {
 .post-archive {
   min-width: 100px;
   max-width: 60%;
-  background-color: red;
+  background-color: white;
   padding: 6px 0 8px 0;
   padding-left: 9px;
   padding-right: 7px;
@@ -233,8 +233,16 @@ textarea:focus {
   margin-bottom: 0.5em;
 }
 
+.post-now span:last-child, .post-archive span:last-child {
+  margin-bottom: 0;
+}
+
 .current-user {
   color: white;
+  font-weight: 500;
+}
+
+.archive-user {
   font-weight: 500;
 }
 

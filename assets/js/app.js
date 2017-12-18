@@ -50,23 +50,13 @@ var obtainLastData = (function(data, where) {
   }
 });
 
-/*
-* Function that allows the user access to the archived data of every contact
-*/
-
-var showFullChat = (function(whereClick, data, majorContainer, whereClean) {
-  $(whereClick).click(function() {
-    for (var i = 0; i < data.length; i++) {
-      if ($(this).find(".username").html() == data[i].name[0]) {
-        $(whereClean).css({"display":"none"});
-        $(majorContainer).html("<div class='chat-inside'></div>");
-        for (var n = 0; n < data[i].messages.length; n++) {
-          $(".chat-inside").html("<div class='post-container-arch'><div class='post-archive'><span>"+data[i].name[0]+"</span><span>"
-            +data[i].messages[n]+"</span></div></div>");
-        }
-      }
-    }
-  });
+var addValue = (function(obj, key, value) {
+  if (obj.hasOwnProperty(key)) {
+    obj[key].push(value);
+  } else {
+    var arr = jQuery.makeArray(value);
+    obj[key] = arr;
+  }
 });
 
 /*
@@ -98,7 +88,40 @@ $(document).ready(function() {
       currentData.name = $(loginUsername).val();
       currentData.photo = "<img src='"+ $(loginAvatarURL).val()+ "' alt='"+$(loginUsername).val()+"' class='profile-pic'>";
       obtainLastData(data, "#archive");
-      showFullChat(".archive-box", data, "#chat", ".chat-inside");
+      $(".archive-box").click(function() {
+        for (var i = 0; i < data.length; i++) {
+          var whatName = $(this).find(".username").html();
+          if (whatName == data[i].name) {
+            $(chat).html("<div class='chat-inside'></div>");
+            for (var n = 0; n < data[i].messages.length; n++) {
+              $(".chat-inside").append("<div class='post-container-arch'><div class='post-archive'><span class='archive-user'>"+data[i].name[0]+"</span><span>"
+                +data[i].messages[n]+"</span><span class='time'>"+ data[i].time[n] +"</span></div></div>");
+            }
+          }
+        }
+      });
+
+      $("#send-btn").click(function() {
+        var currentMsg = $(textaMsg).val().trim();
+        $("#textarea-msg").val("");
+        for (var i = 0; i < data.length; i++) {
+          var whatName = $(".post-archive").children().html();
+          if (whatName.includes(data[i].name[0])) {
+            whatName = data[i].name[0];
+          }
+        }
+        
+        addValue(currentData.messages, whatName, currentMsg);
+        $(this).addClass("disabled");
+        var currentTime = determineHour()+":"+determineMinutes();
+        addValue(currentData.time, whatName, currentTime);
+        for (var i = 0; i < data.length; i++) {
+          addValue(data[i].answers, whatName, currentMsg);
+        }
+        $(".chat-inside").append(postNow + setUsername(currentData.name) + "<span>" + currentMsg + "</span><span class='time'>"
+          + currentTime + "</span>" + endPost);
+      });
+
       $("#loader").css({"display":"flex"});
       $("#login").fadeOut();
       $("#app").fadeIn();
@@ -113,14 +136,6 @@ $(document).ready(function() {
         } else {
           $(sendBtn).addClass("disabled");
         }
-      });
-
-      $("#send-btn").click(function() {
-        msg = $(textaMsg).val().trim();
-        currentData.messages.push(msg);
-        $(textaMsg).val("");
-        $(this).addClass("disabled");
-        $(".chat-inside").append(postNow+setUsername(currentData.name)+"<span>"+msg+"</span>"+"<span class='time'>"+determineHour()+":"+determineMinutes()+"</span>"+endPost);
       });
 
     } else {
