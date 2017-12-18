@@ -75,6 +75,10 @@ html {
   margin-bottom: -2em;
 }
 
+#app {
+  display: none;
+}
+
 .avatar-container {
   width: 49px;
   height: 49px;
@@ -175,6 +179,10 @@ textarea:focus {
   box-shadow: 0 4px 0px -2px #26a69a;
 }
 
+#archive {
+  height: 85vh;
+}
+
 #write-here {
   padding: 1em 2em;
 }
@@ -196,7 +204,7 @@ textarea:focus {
 }
 
 .post-now {
-  min-width: 50px;
+  min-width: 100px;
   max-width: 60%;
   background-color: #B0CAC8;
   padding: 6px 0 8px 0;
@@ -208,7 +216,7 @@ textarea:focus {
 }
 
 .post-archive {
-  min-width: 50px;
+  min-width: 100px;
   max-width: 60%;
   background-color: red;
   padding: 6px 0 8px 0;
@@ -219,15 +227,46 @@ textarea:focus {
   word-wrap: break-word;
 }
 
-.post-now span:first-child, .post-archive span:first-child  {
+.post-now span, .post-archive span {
   display: block;
   line-height: 1.4;
   margin-bottom: 0.5em;
 }
 
+.current-user {
+  color: white;
+  font-weight: 500;
+}
+
 .time {
+  display: block;
   float: right;
 }
+
+#archive .archive-box {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid #d3d3d3;
+}
+
+.username {
+  display: block;
+  color: #4b4b4b;
+  font-weight: 500;
+  margin-top: 5px;
+}
+
+.profile-pic {
+  width: 45px;
+  height: 45px;
+  border-radius: 100%;
+  object-fit: cover;
+  object-position: center;
+  float: left;
+  clear: right;
+  margin-right: 1em;
+}
+
 
 /* 
 .hamburger--collapse .hamburger-inner::after {

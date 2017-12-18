@@ -2,7 +2,7 @@ var loginUsername = "#login-username";
 var pass = "#pass";
 var loginAvatarURL = "#login-avatar-url";
 var loginBtn = "#login-btn";
-var passwd = "kaiwappLogin//88";
+var passwd = "login";
 var checkImg = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|jpeg|png|svg)/;
 var textaMsg = $("#textarea-msg");
 var sendBtn = $("#send-btn");
@@ -34,6 +34,50 @@ var determineMinutes = (function() {
   return minutes;
 });
 
+/*
+* Function that shows all the last storage data
+*/
+var obtainLastData = (function(data, where) {
+  for (var i = 0; i < data.length; i++) {
+    if (data[i].group === false) {
+      var msg = data[i].messages[data[i].messages.length-1];
+      if (msg.length > 20) {
+        msg = msg.substring(0,20)+"...";
+      }
+      $(where).append("<div class='row'><div class='col s12 archive-box'>"+data[i].photo[0]+"<span class='username'>"
+        +data[i].name[0]+"</span><span>"+msg+"</span><span class='time'>"+data[i].time[data[i].messages.length-1]+"</span></div></div>");
+    }
+  }
+});
+
+/*
+* Function that allows the user access to the archived data of every contact
+*/
+
+var showFullChat = (function(whereClick, data, majorContainer, whereClean) {
+  $(whereClick).click(function() {
+    for (var i = 0; i < data.length; i++) {
+      if ($(this).find(".username").html() == data[i].name[0]) {
+        $(whereClean).css({"display":"none"});
+        $(majorContainer).html("<div class='chat-inside'></div>");
+        for (var n = 0; n < data[i].messages.length; n++) {
+          $(".chat-inside").html("<div class='post-container-arch'><div class='post-archive'><span>"+data[i].name[0]+"</span><span>"
+            +data[i].messages[n]+"</span></div></div>");
+        }
+      }
+    }
+  });
+});
+
+/*
+* Function to get the nickname of the current user
+* and puts it inside a box
+*/
+
+var setUsername = (function(str) {
+  return "<span class='current-user'>"+str+"</span>";
+});
+
 
 $(document).ready(function() {
 
@@ -48,10 +92,37 @@ $(document).ready(function() {
       $(loginBtn).addClass("disabled");
     }
   });
-
+/*"<img src='assets/img/avatars/saika.jpeg' alt='Saika Ogawa' class='profile-pic'>"*/
   $(loginBtn).click(function() {
     if ($(pass).val() == passwd && checkImg.test($(loginAvatarURL).val())) {
-      window.location.replace("app.html");
+      currentData.name = $(loginUsername).val();
+      currentData.photo = "<img src='"+ $(loginAvatarURL).val()+ "' alt='"+$(loginUsername).val()+"' class='profile-pic'>";
+      obtainLastData(data, "#archive");
+      showFullChat(".archive-box", data, "#chat", ".chat-inside");
+      $("#loader").css({"display":"flex"});
+      $("#login").fadeOut();
+      $("#app").fadeIn();
+      setTimeout(function(){
+      $("#loader").fadeOut();
+        },1000);
+
+      
+      $(textaMsg).keyup(function() {
+        if ($(this).val().length > 0) {
+          $(sendBtn).removeClass("disabled");
+        } else {
+          $(sendBtn).addClass("disabled");
+        }
+      });
+
+      $("#send-btn").click(function() {
+        msg = $(textaMsg).val().trim();
+        currentData.messages.push(msg);
+        $(textaMsg).val("");
+        $(this).addClass("disabled");
+        $(".chat-inside").append(postNow+setUsername(currentData.name)+"<span>"+msg+"</span>"+"<span class='time'>"+determineHour()+":"+determineMinutes()+"</span>"+endPost);
+      });
+
     } else {
       alert("Input not valid");
     }
@@ -66,21 +137,6 @@ $(document).ready(function() {
     $(this).mouseleave(function() {
       $(".hamburger").css({"opacity":"1"});
     });
-  });
-
-  $(textaMsg).keyup(function() {
-    if ($(this).val().length > 0) {
-      $(sendBtn).removeClass("disabled");
-    } else {
-      $(sendBtn).addClass("disabled");
-    }
-  });
-
-  $("#send-btn").click(function() {
-    msg = $(textaMsg).val().trim();
-    $(textaMsg).val("");
-    $(this).addClass("disabled");
-    $(chat).append(postNow+"<span>"+msg+"</span>"+"<span class='time'>"+determineHour()+":"+determineMinutes()+"</span>"+endPost);
   });
 });
 

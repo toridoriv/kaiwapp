@@ -24,7 +24,9 @@
   <link rel="manifest" href="/manifest.json">
   <link rel="stylesheet" href="assets/css/jquery-ui.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/materialize.min.css">
+  <link rel="stylesheet" href="assets/css/hamburgers.css">
   <link rel="stylesheet" href="assets/css/main.css">
   <link rel="stylesheet" href="assets/css/media.css">
 </head>
@@ -70,15 +72,54 @@
         <div id="login-info" class="col s12 center-align">
           <p>Your username cannot contain spaces or symbols and the url of the image must end with jpg, jpeg, gif or svg.</p>
           <p>For this demo you can choose your username, but make sure to use the following
-          pass: "<strong>kaiwappLogin//88"</strong>.</p>
+          pass: "<strong>login</strong>".</p>
         </div>
       </div>
     </div>
   </section>
-
+  <div id="app">
+    <div class="big-container">
+      <div class="row">
+        <div id="first-panel" class="col s4 valign-wrapper panel">
+          <div class="hamburger hamburger--elastic">
+            <div class="hamburger-box">
+              <div class="hamburger-inner"></div>
+            </div>
+          </div>
+          <div id="title-panel" class="hide-on-small-only">
+            <span>Kaiwapp</span>
+          </div>
+        </div>
+        <div id="second-panel" class="col s6 valign-wrapper panel">
+          <div id="state">
+          </div>
+        </div>
+        <div id="third-panel" class="col s2 valign-wrapper panel">
+          <div id="left-icons">
+            <i class="material-icons">search</i>
+            <i class="material-icons">more_vert</i>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div id="archive-container" class="col s4 white cont">
+          <div id="archive" class="over-y scrollbar"></div>
+        </div>
+        <div id="chat-container" class="col s8 white cont">
+          <div id="chat" class="over-y scrollbar"></div>
+          <div id="write-here">
+            <textarea id="textarea-msg" placeholder="Write a message here"></textarea>
+            <a id="send-btn" class="waves-effect waves-light btn disabled">Send</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <script src="assets/js/jquery-3.2.1.js"></script>
   <script src="assets/js/jquery-ui.min.js"></script>
   <script src="assets/js/materialize.min.js"></script>
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/dom.js"></script>
   <script src="assets/js/app.js"></script>
 </body>
 </html>
