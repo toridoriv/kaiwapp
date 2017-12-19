@@ -96,6 +96,11 @@ $(document).ready(function() {
             for (var n = 0; n < data[i].messages.length; n++) {
               $(".chat-inside").append("<div class='post-container-arch'><div class='post-archive'><span class='archive-user'>"+data[i].name[0]+"</span><span>"
                 +data[i].messages[n]+"</span><span class='time'>"+ data[i].time[n] +"</span></div></div>");
+            } if (data[i].answers.length > 0) {
+              for (var u = 0; u < data[i].answers.length; u++) {
+                $(".chat-inside").append(postNow + setUsername(currentData.name) + "<span>" + data[i].answers[u] + "</span><span class='time'>"
+                  + data[i].answersTime[u] + "</span>" + endPost);
+              }
             }
           }
         }
@@ -103,21 +108,20 @@ $(document).ready(function() {
 
       $("#send-btn").click(function() {
         var currentMsg = $(textaMsg).val().trim();
+        var currentTime = determineHour()+":"+determineMinutes();
         $("#textarea-msg").val("");
         for (var i = 0; i < data.length; i++) {
           var whatName = $(".post-archive").children().html();
           if (whatName.includes(data[i].name[0])) {
             whatName = data[i].name[0];
+            addValue(data[i], "answers", currentMsg);
+            addValue(data[i], "answersTime", currentTime);
           }
         }
         
         addValue(currentData.messages, whatName, currentMsg);
         $(this).addClass("disabled");
-        var currentTime = determineHour()+":"+determineMinutes();
         addValue(currentData.time, whatName, currentTime);
-        for (var i = 0; i < data.length; i++) {
-          addValue(data[i].answers, whatName, currentMsg);
-        }
         $(".chat-inside").append(postNow + setUsername(currentData.name) + "<span>" + currentMsg + "</span><span class='time'>"
           + currentTime + "</span>" + endPost);
       });
